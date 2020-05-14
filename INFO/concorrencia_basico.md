@@ -89,4 +89,3 @@ os comandos atômicos se encontram no **Run()** da Classe _FuncoesThread_.
 <img src="imagens/concorrencia_basico/caso1.png"> <img src="imagens/concorrencia_basico/caso2.png"> <img src="imagens/concorrencia_basico/caso3.png">
 
 <img src="imagens/concorrencia_basico/caso4.png"> <img src="imagens/concorrencia_basico/caso5.png"> <img src="imagens/concorrencia_basico/caso6.png"> <img src="imagens/concorrencia_basico/caso7.png">
-
