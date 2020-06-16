@@ -85,3 +85,19 @@ public class TesteInterleaving extends Thread{
 ```
 
 * Os processos vão ser iniciados de forma aleatória e vão ser todos concluidos, dessa forma esse programa possui interleaving e é Justo.
+
+### Sessão Crítica
+
+* Quando duas Threads estão interagindo em uma única variável global pode acontecer problemas devido que as duas Threads podem *Intercalar* operações uma da outra no meio dos Processos.
+* **Sessão Crítica** então é um sistema com N processos, sendo sempre um ou mais processos.
+  * Cada Processo pode ter seu Próprio Código.
+  * Os processos compartilham dados variáveis,de qualquer tipo.
+  * Cada processo possui Sessão Crítica de Código,onde atualizam os dados compartilhados.
+
+**Uma Sessão Crítica deve ter:**
+
+1. Prover Exclusão Mútua, onde as Threads não podem alterar a mesma variável ao mesmo tempo.
+2. Não pode bloquear o progresso de outros Processos
+3. Um processo deve ter uma espera limitada quando estiver rodando, onde ja que duas ou mais Threads estão lutando para rodar um mesmo trecho de código elas possam acessar esse trecho de código com uma espera cada um
+4. Não se tem como saber a velocidade de ação das Threads
+
