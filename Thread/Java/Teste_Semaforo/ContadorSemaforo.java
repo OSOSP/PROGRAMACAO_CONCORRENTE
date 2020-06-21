@@ -11,7 +11,7 @@ class SemaforoIncremento{
 
     public SemaforoIncremento(){
         n = 0; //valor iniciado em zero
-        semaforo = new Semaphore(2);//somente um processo permitido por vez 
+        semaforo = new Semaphore(1);//somente um processo permitido por vez 
     }
 
     public void incremento(int id){
@@ -38,11 +38,10 @@ class ThreadsContador extends Thread{
         this.limite = limite;
     }
 
-    public SemaforoIncremento getSemaforo(){return semaforo;}
-
     public void run(){
         for(int i = 0 ; i < limite ; i++){
             semaforo.incremento(id);
+            System.out.println("Thread #" + id + " : " + "Valor de N: " + semaforo.valor());
         }
     }
 }
@@ -50,18 +49,22 @@ class ThreadsContador extends Thread{
 
 public class ContadorSemaforo {
     public static void main(String[] args){
-        int limite = 100;
-        SemaforoIncremento semaforo1 = new SemaforoIncremento();
-        SemaforoIncremento semaforo2 = new SemaforoIncremento();
-        ThreadsContador thread1 = new ThreadsContador(0, semaforo1, limite);
-        ThreadsContador thread2 = new ThreadsContador(1, semaforo2, limite);
+        int limite = 150;
+        SemaforoIncremento semaforo= new SemaforoIncremento();
+        ThreadsContador thread1 = new ThreadsContador(1, semaforo, limite);
+        ThreadsContador thread2 = new ThreadsContador(2, semaforo, limite);
 
+        // Iniciando os Threads
         thread1.start();
         thread2.start();
 
-        System.out.println("Valor de N na Thread 1: " + thread1.getSemaforo().valor());
-        System.out.println("Valor de N na Thread 2: " + thread2.getSemaforo().valor());
+        // Fazendo os Valores se unirem em um unico valor 
+        try{
+            thread1.join();
+            thread2.join(); 
+        }catch(InterruptedException e){}
 
+        System.out.println("Valor de N: " + semaforo.valor());
 
     }
     
