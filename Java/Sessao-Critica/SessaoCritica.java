@@ -3,10 +3,6 @@ public class SessaoCritica extends Thread {
     
     // Variáveis
     static int n = 0;
-    static boolean wantP = false;
-    static boolean wantQ = false;
-    static int last;
-
     public void run(){
        for(int i = 0 ; i < 10000 ; i++){
             n++;

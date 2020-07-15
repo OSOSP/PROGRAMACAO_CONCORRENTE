@@ -1,5 +1,6 @@
 public class Peterson implements Runnable { 
-    private static boolean[] in = { false, false }; 
+    private static boolean wantp = false;
+    private static boolean wantq = false;
     private static volatile int turn = -1; 
     private final int id;
 
